@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>★☆우주쇼핑몰☆★ - 외계에서 온 멋진 물건</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+:root{--black:#000008;--ng:#00ff41;--np:#ff00ff;--nc:#00ffff;--ny:#ffff00;--no:#ff6600;--dp:#0a0015;--mid:#1a003a;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--black);color:var(--ng);font-family:'Noto Sans KR','MS Gothic',monospace;min-height:100vh;overflow-x:hidden;}
+body::before{content:'✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆ ✦ ✧ ★ ✦ ✧ ☆';position:fixed;top:0;left:0;right:0;bottom:0;font-size:10px;color:rgba(0,255,65,0.07);word-break:break-all;line-height:1.8;pointer-events:none;z-index:0;letter-spacing:12px;}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.12) 2px,rgba(0,0,0,0.12) 4px);pointer-events:none;z-index:999;}
+.wrap{position:relative;z-index:1;}
+
+/* MARQUEE */
+.mq{background:var(--np);color:black;font-weight:900;font-size:12px;padding:4px 0;overflow:hidden;white-space:nowrap;border-bottom:3px solid var(--ny);}
+.mq-inner{display:inline-block;animation:scroll-l 22s linear infinite;}
+@keyframes scroll-l{0%{transform:translateX(100vw);}100%{transform:translateX(-100%);}}
+
+/* HEADER */
+.hdr{background:var(--dp);border-bottom:3px double var(--nc);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.logo-main{font-size:26px;font-weight:900;color:var(--ny);text-shadow:0 0 5px var(--ny),0 0 10px var(--ny),0 0 20px var(--no),0 0 40px var(--no);animation:flicker 3s infinite;letter-spacing:4px;display:block;}
+@keyframes flicker{0%,95%,100%{opacity:1;}96%{opacity:0.4;}97%{opacity:1;}98%{opacity:0.6;}99%{opacity:1;}}
+.logo-sub{font-size:11px;color:var(--np);text-shadow:0 0 8px var(--np);animation:blink 1.2s step-end infinite;letter-spacing:2px;}
+.logo-link{font-size:11px;color:var(--nc);text-decoration:underline;cursor:pointer;display:block;margin-top:2px;}
+@keyframes blink{0%,100%{visibility:visible;}50%{visibility:hidden;}}
+.blink{animation:blink 1s step-end infinite;}
+.blink-fast{animation:blink 0.5s step-end infinite;}
+
+.vis-count{font-size:11px;color:var(--ng);border:1px solid var(--ng);padding:2px 8px;font-family:monospace;}
+.hdr-btns{display:flex;gap:6px;}
+.btn{padding:4px 12px;font-size:12px;font-weight:700;font-family:'Noto Sans KR',monospace;cursor:pointer;border:none;transition:all 0.1s;letter-spacing:1px;}
+.btn:active{transform:scale(0.95);}
+.btn-g{background:var(--ng);color:black;border:2px solid var(--ng);box-shadow:0 0 8px var(--ng);}
+.btn-g:hover{box-shadow:0 0 20px var(--ng);}
+.btn-p{background:black;color:var(--np);border:2px solid var(--np);box-shadow:0 0 8px var(--np);}
+.btn-p:hover{background:var(--np);color:black;box-shadow:0 0 20px var(--np);}
+.btn-c{background:black;color:var(--nc);border:2px solid var(--nc);box-shadow:0 0 8px var(--nc);}
+.btn-c:hover{background:var(--nc);color:black;box-shadow:0 0 20px var(--nc);}
+.btn-y{background:var(--ny);color:black;border:2px solid var(--ny);box-shadow:0 0 10px var(--ny);font-size:13px;padding:7px 20px;}
+.btn-y:hover{box-shadow:0 0 25px var(--ny);}
+
+/* NAV */
+.nav{background:black;border-top:2px solid var(--nc);border-bottom:2px solid var(--nc);display:flex;flex-wrap:wrap;}
+.nav-it{padding:8px 14px;font-size:12px;font-weight:700;color:var(--ng);cursor:pointer;border-right:1px solid rgba(0,255,65,0.3);text-shadow:0 0 5px var(--ng);transition:all 0.1s;letter-spacing:1px;}
+.nav-it:hover,.nav-it.act{background:var(--ng);color:black;text-shadow:none;}
+.nav-member{color:var(--np)!important;text-shadow:0 0 5px var(--np)!important;}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:155px 1fr 155px;min-height:calc(100vh - 110px);}
+.sb{background:var(--dp);border-right:2px dashed rgba(0,255,255,0.25);padding:8px;}
+.sb-r{background:var(--dp);border-left:2px dashed rgba(255,0,255,0.25);padding:8px;}
+.sbox{border:2px solid var(--nc);padding:7px;margin-bottom:10px;background:rgba(0,255,255,0.02);box-shadow:0 0 6px rgba(0,255,255,0.15);}
+.sbox-p{border-color:var(--np)!important;box-shadow:0 0 6px rgba(255,0,255,0.15)!important;background:rgba(255,0,255,0.02)!important;}
+.sbox-y{border-color:rgba(255,255,0,0.5)!important;box-shadow:0 0 6px rgba(255,255,0,0.15)!important;}
+.sb-title{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;padding-bottom:3px;border-bottom:1px solid currentColor;}
+.sb-item{font-size:11px;padding:4px 2px;color:var(--ng);cursor:pointer;border-bottom:1px dotted rgba(0,255,65,0.2);transition:all 0.1s;}
+.sb-item:hover{color:var(--ny);text-shadow:0 0 5px var(--ny);padding-left:5px;}
+
+.ad-box{background:black;border:3px solid var(--ny);padding:9px 6px;text-align:center;margin-bottom:10px;animation:bp 2s infinite;cursor:pointer;}
+@keyframes bp{0%,100%{border-color:var(--ny);box-shadow:0 0 5px var(--ny);}50%{border-color:var(--np);box-shadow:0 0 15px var(--np);}}
+.ad-t{font-size:13px;font-weight:900;color:var(--ny);text-shadow:0 0 8px var(--ny);line-height:1.3;}
+.ad-s{font-size:10px;color:var(--np);margin-top:3px;}
+
+/* MAIN */
+.main{background:rgba(0,0,8,0.95);padding:14px;}
+.page{display:none;}
+.page.act{display:block;}
+
+.notice{background:rgba(255,0,0,0.08);border:2px solid red;padding:7px 10px;margin-bottom:12px;font-size:11px;color:#ff6666;display:flex;align-items:center;gap:7px;box-shadow:0 0 8px rgba(255,0,0,0.25);}
+
+/* HERO BANNER */
+.hero{border:3px double var(--nc);background:var(--dp);padding:20px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(0,255,255,0.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(255,0,255,0.07) 0%,transparent 60%);}
+.hero-title{font-size:30px;font-weight:900;color:white;text-shadow:0 0 7px #fff,0 0 10px #fff,0 0 21px #fff,0 0 42px var(--nc),0 0 82px var(--nc);letter-spacing:6px;position:relative;}
+.hero-sub{font-size:12px;color:var(--np);text-shadow:0 0 8px var(--np);margin:7px 0;letter-spacing:3px;animation:blink 0.8s step-end infinite;position:relative;}
+.hero-desc{font-size:11px;color:var(--ng);margin-bottom:14px;position:relative;}
+.sec-title{font-size:13px;font-weight:900;color:var(--ny);text-shadow:0 0 8px var(--ny);letter-spacing:3px;text-transform:uppercase;border-left:4px solid var(--ny);padding-left:9px;margin:14px 0 9px;}
+.sec-title-p{color:var(--np)!important;text-shadow:0 0 8px var(--np)!important;border-left-color:var(--np)!important;}
+
+/* PRODUCTS */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:9px;margin-bottom:18px;}
+.pc{background:var(--dp);border:2px solid rgba(0,255,65,0.35);padding:9px;cursor:pointer;transition:all 0.15s;position:relative;}
+.pc:hover{border-color:var(--ng);box-shadow:0 0 14px rgba(0,255,65,0.45);transform:translateY(-2px);}
+.pc.mem{border-color:rgba(255,0,255,0.35);}
+.pc.mem:hover{border-color:var(--np);box-shadow:0 0 14px rgba(255,0,255,0.45);}
+.pc-img{width:100%;height:80px;display:flex;align-items:center;justify-content:center;font-size:38px;background:black;border:1px solid rgba(255,255,255,0.08);margin-bottom:7px;}
+.pc-name{font-size:12px;font-weight:700;color:var(--ng);margin-bottom:3px;line-height:1.3;}
+.pc-desc{font-size:10px;color:rgba(0,255,65,0.55);margin-bottom:5px;line-height:1.4;}
+.pc-ft{display:flex;align-items:center;justify-content:space-between;margin-top:5px;}
+.pc-price{font-size:13px;font-weight:900;color:var(--ny);text-shadow:0 0 5px var(--ny);font-family:monospace;}
+.btn-buy{background:var(--ng);color:black;border:none;padding:3px 7px;font-size:10px;font-weight:900;cursor:pointer;font-family:monospace;}
+.btn-buy:hover{background:var(--ny);}
+.nbadge{position:absolute;top:-1px;right:-1px;background:red;color:white;font-size:9px;font-weight:900;padding:2px 5px;animation:blink 0.6s step-end infinite;}
+.mbadge{position:absolute;top:-1px;left:-1px;background:var(--np);color:black;font-size:9px;font-weight:900;padding:2px 5px;}
+
+/* LOCKED */
+.locked{border:3px dashed rgba(255,0,255,0.45);padding:28px;text-align:center;background:rgba(255,0,255,0.02);margin:14px 0;position:relative;overflow:hidden;}
+.locked::before{content:'🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒🔒';position:absolute;top:0;left:0;right:0;font-size:10px;opacity:0.15;word-break:break-all;letter-spacing:4px;line-height:1.5;pointer-events:none;}
+.locked-icon{font-size:36px;margin-bottom:7px;}
+.locked-t{font-size:15px;font-weight:900;color:var(--np);text-shadow:0 0 10px var(--np);margin-bottom:7px;letter-spacing:2px;}
+.locked-d{font-size:11px;color:rgba(255,0,255,0.65);margin-bottom:14px;line-height:1.5;}
+
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:500;align-items:center;justify-content:center;padding:16px;}
+.mo.open{display:flex;}
+.mbox{background:var(--dp);border:3px solid var(--nc);box-shadow:0 0 30px var(--nc),0 0 60px rgba(0,255,255,0.2);width:100%;max-width:450px;max-height:92vh;overflow-y:auto;position:relative;animation:min 0.2s ease;}
+@keyframes min{from{opacity:0;transform:scale(0.9) translateY(-20px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.mhdr{background:black;border-bottom:2px solid var(--nc);padding:9px 14px;display:flex;align-items:center;justify-content:space-between;}
+.mtitle{font-size:13px;font-weight:900;color:var(--nc);text-shadow:0 0 8px var(--nc);letter-spacing:3px;text-transform:uppercase;}
+.mclose{background:transparent;border:1px solid rgba(255,255,255,0.3);color:white;width:22px;height:22px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.mclose:hover{background:red;border-color:red;}
+.mbody{padding:14px;}
+.flabel{display:block;font-size:11px;color:var(--nc);letter-spacing:1px;margin-bottom:3px;text-transform:uppercase;}
+.finput{width:100%;background:black;border:1px solid rgba(0,255,255,0.4);color:var(--ng);padding:7px 9px;font-size:12px;font-family:'Noto Sans KR',monospace;outline:none;transition:border-color 0.2s;margin-bottom:10px;}
+.finput:focus{border-color:var(--nc);box-shadow:0 0 7px rgba(0,255,255,0.25);}
+.finput::placeholder{color:rgba(0,255,65,0.3);}
+
+/* ADULT VERIFY */
+.adult{background:rgba(255,60,0,0.07);border:2px solid rgba(255,100,0,0.55);padding:10px;margin-bottom:10px;box-shadow:0 0 8px rgba(255,100,0,0.15);}
+.adult-t{font-size:12px;font-weight:900;color:var(--no);text-shadow:0 0 6px var(--no);margin-bottom:6px;display:flex;align-items:center;gap:5px;}
+.adult-d{font-size:10px;color:rgba(255,100,0,0.75);margin-bottom:8px;line-height:1.5;}
+
+/* TERMS */
+.tbox{background:rgba(0,255,255,0.025);border:1px solid rgba(0,255,255,0.18);padding:9px;margin-bottom:10px;}
+.ttitle{font-size:11px;font-weight:700;color:var(--nc);margin-bottom:5px;letter-spacing:1px;}
+.tscroll{background:black;border:1px solid rgba(0,255,65,0.18);padding:7px;height:65px;overflow-y:auto;font-size:10px;color:rgba(0,255,65,0.55);line-height:1.6;margin-bottom:7px;font-family:monospace;}
+.tscroll::-webkit-scrollbar{width:3px;}
+.tscroll::-webkit-scrollbar-thumb{background:var(--ng);}
+.crow{display:flex;align-items:flex-start;gap:7px;padding:4px 0;border-bottom:1px dotted rgba(0,255,65,0.12);cursor:pointer;}
+.crow:last-child{border-bottom:none;}
+.crow input[type=checkbox]{width:13px;height:13px;accent-color:var(--ng);flex-shrink:0;margin-top:2px;cursor:pointer;}
+.clabel{font-size:11px;color:rgba(0,255,65,0.75);line-height:1.4;}
+.creq{color:var(--np);font-weight:700;}
+.copt{color:rgba(0,255,65,0.45);}
+
+.fdiv{border:none;border-top:1px dashed rgba(0,255,255,0.18);margin:10px 0;}
+.err{font-size:11px;color:#ff4444;margin-top:-6px;margin-bottom:8px;}
+.mswitch{text-align:center;font-size:11px;color:rgba(0,255,65,0.45);margin-top:10px;padding-top:10px;border-top:1px dashed rgba(0,255,65,0.18);}
+.mswitch span{color:var(--nc);cursor:pointer;text-decoration:underline;}
+
+/* USER STATUS */
+.ustat{display:none;align-items:center;gap:7px;font-size:11px;}
+.ustat.vis{display:flex;}
+.ubadge{background:rgba(0,255,65,0.08);border:1px solid var(--ng);color:var(--ng);padding:3px 7px;font-size:11px;font-family:monospace;}
+
+/* PRODUCT DETAIL */
+.pdetail{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:500;align-items:center;justify-content:center;padding:16px;}
+.pdetail.open{display:flex;}
+.pdbox{background:var(--dp);border:2px solid var(--nc);box-shadow:0 0 28px var(--nc);max-width:380px;width:100%;padding:18px;position:relative;animation:min 0.2s ease;}
+.pdc{position:absolute;top:7px;right:7px;background:transparent;border:1px solid rgba(255,255,255,0.3);color:white;width:20px;height:20px;cursor:pointer;font-size:12px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:18px;right:18px;background:black;border:2px solid var(--ng);color:var(--ng);padding:9px 14px;font-size:12px;font-weight:700;z-index:600;box-shadow:0 0 18px var(--ng);opacity:0;transform:translateY(8px);transition:all 0.3s;pointer-events:none;letter-spacing:1px;max-width:280px;}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* FOOTER */
+.footer{background:black;border-top:2px solid var(--ng);padding:7px 16px;font-size:10px;color:rgba(0,255,65,0.35);text-align:center;letter-spacing:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="mq"><span class="mq-inner">★ 우주쇼핑몰에 오신 것을 환영합니다!! ★ 외계 배송 평균 3지구일 소요 ★ 신규 가입시 은하포인트 1000P 즉시 지급!! ★ 오늘만 전품목 UFO특가!! ★ 회원전용 비밀상품 공개중!! ★ 우리는 지구인 고객을 환영합니다 ★ ※주의: 본 쇼핑몰은 적법한 사용자에게만 판매합니다※ ★ &nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+
+<header class="hdr">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span style="font-size:34px;">👽</span>
+    <div>
+      <span class="logo-main">★우주쇼핑몰★</span>
+      <span class="logo-sub">※외계에서 온 멋진 물건※</span>
+      <span class="logo-link" onclick="showPage('shop')">▶▶나는물건을 본다◀◀</span>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;">
+    <div class="vis-count">[ 현재접속: <span id="nowOnline">247</span>명 ONLINE ]</div>
+    <div class="hdr-btns" id="authBtns">
+      <button class="btn btn-c" onclick="openMo('moLogin')">로그인</button>
+      <button class="btn btn-p" onclick="openMo('moReg')">회원가입</button>
+    </div>
+    <div class="ustat" id="uStat">
+      <span class="ubadge" id="uBadge">[ USER ]</span>
+      <button class="btn btn-g" onclick="logout()">로그아웃</button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-it act" onclick="showPage('home');actNav(this)">🏠 홈</div>
+<div class="nav-it" onclick="showPage('shop',null);actNav(this)">🛒 전체상품</div>
+<div class="nav-it" onclick="showPage('shop','전파용품');actNav(this)">📡 전파용품</div>
+<div class="nav-it" onclick="showPage('shop','섭취용품');actNav(this)">🍬 섭취용품</div>
+<div class="nav-it" onclick="showPage('shop','주거침입용품');actNav(this)">🪑 주거침입용품</div>
+<div class="nav-it" onclick="showPage('shop','기타용품');actNav(this)">🌀 기타용품</div>
+<div class="nav-it nav-member" id="navMember" style="display:none;" onclick="showPage('member');actNav(this)">🔒 회원전용</div>
+<div class="nav-it" onclick="toast('📦 배송조회 기능 준비중...')">📦 배송조회</div>
+</nav>
+
+<div class="layout">
+  <!-- 왼쪽 사이드바 -->
+  <aside class="sb">
+    <div class="sbox">
+      <div class="sb-title" style="color:var(--nc);">카테고리</div>
+      <div class="sb-item" onclick="showPage('shop',null)">▶ 전체상품</div>
+      <div class="sb-item" onclick="showPage('shop','전파용품')">▶ 전파용품</div>
+      <div class="sb-item" onclick="showPage('shop','섭취용품')">▶ 섭취용품</div>
+      <div class="sb-item" onclick="showPage('shop','주거침입용품')">▶ 주거침입용품</div>
+      <div class="sb-item" onclick="showPage('shop','기타용품')">▶ 기타용품</div>
+    </div>
+    <div class="ad-box" onclick="toast('🚀 이벤트 준비중!')">
+      <div class="ad-t">🎁오늘만<br>50%할인!!</div>
+      <div class="ad-s blink">▶▶클릭◀◀</div>
+    <div class="sbox sbox-p">
+      <div class="sb-title" style="color:var(--np);">최근 본 상품</div>
+      <div id="recentList" style="font-size:10px;color:rgba(255,0,255,0.5);line-height:1.6;">없음</div>
+    </div>
+    <div class="sbox">
+      <div class="sb-title" style="color:var(--ng);">은하 시계</div>
+      <div id="galClock" style="font-size:11px;font-family:monospace;text-align:center;color:var(--ng);text-shadow:0 0 5px var(--ng);">00:00:00</div>
+      <div style="font-size:9px;color:rgba(0,255,65,0.35);text-align:center;margin-top:2px;">EARTH TIME</div>
+    </div>
+  </aside>
+
+  <!-- 메인 -->
+  <main class="main">
+
+    <!-- 홈 -->
+    <div class="page act" id="pg-home">
+      <div class="notice"><span class="blink-fast">⚠</span><span>본 쇼핑몰은 적법한 회원에게만 특별 상품을 제공합니다. 무단 접근 시 은하연방에 신고됩니다.</span></div>
+      <div class="hero">
+        <div class="hero-title">우주 쇼핑몰</div>
+        <div class="hero-sub">★ 은하계 최저가 보장!! 지구 택배 가능!! ★</div>
+        <div class="hero-desc">외계 기술로 만든 제품들을 지구 최초 공개합니다</div>
+        <button class="btn btn-y" onclick="showPage('shop')">▶ 지금 쇼핑하기 ◀</button>
+      </div>
+      <div class="sec-title">🔥 인기 상품 TOP</div>
+      <div class="pgrid" id="grid-feat"></div>
+      <div class="sec-title">🆕 신규 입고</div>
+      <div class="pgrid" id="grid-new"></div>
+      <div id="homeTeaser" class="locked">
+        <div class="locked-icon">🔒</div>
+        <div class="locked-t">★ 회원전용 비밀상품 ★</div>
+        <div class="locked-d">회원만 볼 수 있는 특별한 외계 상품들이 숨겨져 있습니다.<br><span class="blink" style="color:var(--ny);">지금 가입하면 은하포인트 1000P 즉시 지급!!</span></div>
+        <button class="btn btn-p" onclick="openMo('moReg')">▶ 지금 회원가입 ◀</button>
+      </div>
+    </div>
+
+    <!-- 상품 -->
+    <div class="page" id="pg-shop">
+      <div class="sec-title">🛸 전체 상품 목록</div>
+      <div class="pgrid" id="grid-all"></div>
+      <div id="shopTeaser" class="locked">
+        <div class="locked-icon">👽</div>
+        <div class="locked-t">회원 전용 카테고리</div>
+        <div class="locked-d">회원가입 후 더 많은 외계 상품을 만나보세요!</div>
+        <button class="btn btn-p" onclick="openMo('moReg')">회원가입하기</button>
+      </div>
+    </div>
+
+    <!-- 회원 전용 -->
+    <div class="page" id="pg-member">
+      <div class="notice" style="border-color:var(--np);color:var(--np);">
+        <span class="blink">★</span><span>회원전용 페이지입니다. 외부 유출 금지!! 외계연방 보호 상품 포함.</span>
+      </div>
+      <div class="sec-title sec-title-p">🔐 회원 전용 상품</div>
+      <div class="pgrid" id="grid-mem1"></div>
+    </div>
+
+  </main>
+
+  <!-- 오른쪽 사이드바 -->
+  <aside class="sb-r">
+    <div class="ad-box" style="border-color:var(--np);box-shadow:0 0 8px var(--np);" onclick="openMo('moReg')">
+      <div class="ad-t" style="color:var(--np);">신규가입<br>1000P!!</div>
+      <div class="ad-s blink" style="cursor:pointer;">▶클릭◀</div>
+    </div>
+    <div class="sbox sbox-p">
+      <div class="sb-title" style="color:var(--np);">실시간 구매</div>
+      <div id="rtFeed" style="font-size:10px;"></div>
+    </div>
+    <div class="sbox sbox-y">
+      <div class="sb-title" style="color:rgba(255,255,0,0.8);">은하 날씨</div>
+      <div style="font-size:11px;color:rgba(255,255,0,0.8);text-align:center;padding:4px 0;">🌌 맑음<br><span style="font-size:10px;opacity:0.6;">우주먼지: 보통<br>배송지수: 최적</span></div>
+    </div>
+    <div class="sbox">
+      <div class="sb-title" style="color:var(--ng);">공지사항</div>
+      <div style="font-size:10px;color:rgba(0,255,65,0.65);line-height:1.7;">▶ 명절 배송 안내<br>▶ 환불정책 변경<br>▶ <span class="blink" style="color:var(--ny);">시스템 점검 예정</span></div>
+    </div>
+  </aside>
+</div>
+
+<footer class="footer">
+  ★ 우주쇼핑몰 | 외계사업자등록번호: GX-77743-ZETA | 은하연방 공인 쇼핑몰 | 고객센터: 0000-SPACE ★<br>
+  <span style="opacity:0.35;font-size:9px;">본 사이트는 모의 쇼핑몰입니다. 실제 거래와 관련 없습니다.</span>
+</footer>
+
+</div><!-- /wrap -->
+
+<!-- 로그인 모달 -->
+<div class="mo" id="moLogin">
+  <div class="mbox">
+    <div class="mhdr">
+      <span class="mtitle">[ 로그인 ]</span>
+      <button class="mclose" onclick="closeMo('moLogin')">✕</button>
+    </div>
+    <div class="mbody">
+      <div style="text-align:center;font-size:11px;color:rgba(0,255,255,0.5);margin-bottom:12px;letter-spacing:1px;">▶ 지구인 계정으로 로그인하세요 ◀</div>
+      <label class="flabel">아이디</label>
+      <input type="text" class="finput" id="liId" placeholder="아이디 입력">
+      <label class="flabel">비밀번호</label>
+      <input type="password" class="finput" id="liPw" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')doLogin()">
+      <div id="liErr" class="err" style="display:none;"></div>
+      <button class="btn btn-g" style="width:100%;padding:9px;font-size:13px;" onclick="doLogin()">▶ 로그인 ◀</button>
+      <div class="mswitch">계정이 없으신가요? <span onclick="swMo('moLogin','moReg')">회원가입하기</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 회원가입 모달 -->
+<div class="mo" id="moReg">
+  <div class="mbox">
+    <div class="mhdr">
+      <span class="mtitle">[ 회원가입 ]</span>
+      <button class="mclose" onclick="closeMo('moReg')">✕</button>
+    </div>
+    <div class="mbody">
+      <div style="text-align:center;font-size:11px;color:rgba(255,0,255,0.6);margin-bottom:12px;letter-spacing:1px;">★ 가입 즉시 은하포인트 1000P 지급!! ★</div>
+
+      <label class="flabel">아이디</label>
+      <input type="text" class="finput" id="rId" placeholder="영문/숫자 4~12자">
+      <label class="flabel">비밀번호</label>
+      <input type="password" class="finput" id="rPw" placeholder="8자 이상">
+
+      <hr class="fdiv">
+
+   
+    <!-- 성인 인증 -->
+    <div class="adult">
+      <div class="adult-t">🔞 성인 인증 <span class="blink-fast" style="color:red;">[ 필수 ]</span></div>
+     <div class="adult-d" style="font-size:11px;line-height:1.7;">
+       ⚠ 우주쇼핑몰은 <span style="color:var(--no);font-weight:700;">만 19세 이상</span>만 가입이 가능하다.<br>
+       해당하는 자는 아래에 체크하시오.<br>
+       <span style="color:rgba(255,100,0,0.5);font-size:10px;">해당하지 않는 자는 뒤로 돌아가시오.</span>
+      </div>
+      <label class="crow" style="background:rgba(255,100,0,0.08);padding:8px;border:1px solid rgba(255,100,0,0.35);gap:10px;">
+       <input type="checkbox" id="chkAdult" style="width:16px;height:16px;accent-color:var(--no);flex-shrink:0;cursor:pointer;">
+        <span style="font-size:12px;color:var(--no);font-weight:700;line-height:1.4;">본인은 만 19세 이상의 성인임을 확인합니다.</span>
+     </label>
+      <div id="ageErr" class="err" style="display:none;margin-top:4px;"></div>
+      </div>
+
+      <hr class="fdiv">
+
+      <!-- 이용약관 -->
+      <div class="tbox">
+        <div class="ttitle">[ 이용약관 ] <span style="color:var(--np);font-size:10px;">필수</span></div>
+        <div class="tscroll">제1조 (목적) 본 약관은 우주쇼핑몰이 제공하는 전자상거래 관련 서비스를 이용함에 있어 몰과 이용자의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다. 제2조 (정의) "이용자"란 몰에 접속하여 이 약관에 따라 서비스를 받는 회원 및 비회원을 말합니다. 제3조 (약관의 효력) 이 약관은 이용자가 동의한 날로부터 효력이 발생합니다. 제4조 (특이사항) 외계 상품의 경우 지구 내 관련 법령에 따라 판매가 제한될 수 있으며, 일부 상품은 은하연방 인증이 필요할 수 있습니다.</div>
+        <label class="crow"><input type="checkbox" id="chkTerms"><span class="clabel"><span class="creq">[필수]</span> 이용약관에 동의합니다</span></label>
+      </div>
+
+      <!-- 개인정보 -->
+      <div class="tbox">
+        <div class="ttitle">[ 개인정보 처리방침 ] <span style="color:var(--np);font-size:10px;">필수</span></div>
+        <div class="tscroll">우주쇼핑몰은 개인정보보호법에 따라 이용자의 개인정보를 보호합니다. 수집 항목: 아이디, 비밀번호. 수집 목적: 서비스 제공 및 계약이행, 회원관리. 보유기간: 회원탈퇴 시까지. ※ 귀하의 정보는 외계 서버에 암호화되어 저장되며 은하연방 보안 인증을 받았습니다.</div>
+        <label class="crow"><input type="checkbox" id="chkPrivacy"><span class="clabel"><span class="creq">[필수]</span> 개인정보 처리방침에 동의합니다</span></label>
+      </div>
+
+      <!-- 마케팅 (선택) -->
+      <div class="tbox" style="border-color:rgba(255,255,0,0.2);">
+        <div class="ttitle" style="color:rgba(255,255,0,0.75);">[ 마케팅 수신 ] <span style="color:rgba(255,255,0,0.45);font-size:10px;">선택</span></div>
+        <label class="crow"><input type="checkbox" id="chkMkt"><span class="clabel"><span class="copt">[선택]</span> 은하 이벤트/할인 정보 수신에 동의합니다</span></label>
+        <label class="crow"><input type="checkbox" id="chkSms"><span class="clabel"><span class="copt">[선택]</span> 회원제 밴드 가입 시 공지사항을 숙지할 것을 약속합니다</span></label>
+      </div>
+
+      <div id="regErr" class="err" style="display:none;"></div>
+      <button class="btn btn-p" style="width:100%;padding:9px;font-size:13px;" onclick="doReg()">▶ 가입 완료 ◀</button>
+      <div class="mswitch">이미 계정이 있으신가요? <span onclick="swMo('moReg','moLogin')">로그인하기</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 상품 상세 -->
+<div class="pdetail" id="pdModal">
+  <div class="pdbox">
+    <button class="pdc" onclick="closePd()">✕</button>
+    <div id="pdImg" style="font-size:60px;text-align:center;background:black;padding:14px;margin-bottom:10px;"></div>
+    <div id="pdName" style="font-size:15px;font-weight:900;color:var(--nc);margin-bottom:5px;"></div>
+    <div id="pdDesc" style="font-size:11px;color:rgba(0,255,65,0.65);margin-bottom:9px;line-height:1.5;"></div>
+    <div id="pdPrice" style="font-size:19px;font-weight:900;color:var(--ny);text-shadow:0 0 8px var(--ny);margin-bottom:12px;font-family:monospace;"></div>
+    <div style="display:flex;gap:7px;">
+      <button class="btn btn-g" style="flex:1;padding:7px;" onclick="addCart()">장바구니 담기</button>
+      <button class="btn btn-y" style="flex:1;padding:7px;" onclick="buyNow()">바로 구매</button>
+    </div>
+  </div>
+</div>
+
+<!-- 밴드 구매 모달 -->
+<div class="mo" id="moBand">
+  <div class="mbox" style="max-width:360px;">
+    <div class="mhdr">
+      <span class="mtitle">[ 구매 안내 ]</span>
+      <button class="mclose" onclick="closeMo('moBand')">✕</button>
+    </div>
+    <div class="mbody" style="text-align:center;">
+      <div style="font-size:32px;margin-bottom:10px;">🅱️</div>
+      <div style="font-size:13px;font-weight:900;color:var(--np);text-shadow:0 0 8px var(--np);margin-bottom:8px;letter-spacing:1px;">[회원] 밴드 가입</div>
+      <div style="font-size:11px;color:rgba(0,255,65,0.7);line-height:1.7;margin-bottom:16px;">
+        아래 버튼을 누르면 밴드로 이동합니다.<br>
+        <span style="color:rgba(0,255,65,0.45);font-size:10px;">※ 외계연방 공식 커뮤니티입니다 ※</span>
+      </div>
+      <button class="btn btn-p" style="width:100%;padding:10px;font-size:13px;margin-bottom:8px;"
+        onclick="window.open('https://band.us/n/aaa4ba25S7wbF','_blank');closeMo('moBand');">
+        ▶ 밴드 바로 가기 ◀
+      </button>
+      <button class="btn btn-g" style="width:100%;padding:7px;font-size:12px;" onclick="closeMo('moBand')">닫기</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toastEl"></div>
+
+<script>
+const PUB=[
+  {id:1,e:'🍴',n:'흡혈식기',d:'',p:'₩14,999,999',isNew:true,cat:'주거침입용품'},
+  {id:2,e:'📞',n:'더 넓은 무전기',d:'어디에서나 원격 통신 가능 / 2개 이상 구매 추천',p:'₩4,999,999',cat:'전파용품'},
+  {id:3,e:'🧺',n:'앨리스 피크닉 세트',d:'Drink me / Eat me',p:'₩11,999,999',isNew:true,cat:'섭취용품'},
+  {id:4,e:'🪙',n:'은화 뱀',d:'반질거리는 은색 동전',p:'₩19,999,999',cat:'기타용품'},
+  {id:5,e:'🛁',n:'혈욕조',d:'※10년 무상 A/S 가능',p:'₩14,999,999',cat:'주거침입용품'},
+  {id:6,e:'🍎',n:'백설공주의 사과',d:'백설산 사과. 정말 맛있다! 미용과 영양! ※사망형 수면 중 신체에 일어난 모든 변화에 대하여 본 농원은 책임지지 않습니다.',p:'₩11,999,999',isNew:true,cat:'섭취용품'},
+  {id:7,e:'🕯️',n:'신비한 양초 키트',d:'권장 이용자: 지구인',p:'₩19,999,999',cat:'기타용품'},
+];
+const MEM1=[
+  {id:101,e:'🔴',n:'[회원] 우리가 도움',d:'긴급 탈출',p:'₩66,666,666',mem:true},
+  {id:102,e:'🅱️',n:'[회원] 밴드 가입',d:'한정 특가! 무료로 가입 가능',p:'FREE',mem:true},
+];
+
+let user=null;
+let curProd=null;
+
+// 클록
+setInterval(()=>{
+  const n=new Date();
+  const el=document.getElementById('galClock');
+  if(el)el.textContent=[n.getHours(),n.getMinutes(),n.getSeconds()].map(v=>String(v).padStart(2,'0')).join(':');
+},1000);
+
+// 접속자
+setInterval(()=>{const el=document.getElementById('nowOnline');if(el)el.textContent=240+Math.floor(Math.random()*25);},3500);
+
+// 실시간 피드
+const fnames=['지구인A','화성인B','달거주자C','목성인D','외계인E'];
+const fitems=['흡혈식기','더 넓은 무전기','은화 뱀','백설공주의 사과','포장지 12B37나'];
+setInterval(()=>{
+  const feed=document.getElementById('rtFeed');
+  if(!feed)return;
+  const d=document.createElement('div');
+  d.style.cssText='font-size:10px;color:rgba(255,0,255,0.65);padding:3px 0;border-bottom:1px dotted rgba(255,0,255,0.18);';
+  d.textContent=fnames[Math.floor(Math.random()*fnames.length)]+' → '+fitems[Math.floor(Math.random()*fitems.length)];
+  feed.insertBefore(d,feed.firstChild);
+  if(feed.children.length>5)feed.removeChild(feed.lastChild);
+},3800);
+
+function mkCard(p){
+  const div=document.createElement('div');
+  div.className='pc'+(p.mem?' mem':'');
+  div.onclick=()=>openPd(p);
+  div.innerHTML=`
+    ${p.isNew?'<div class="nbadge">NEW!</div>':''}
+    ${p.mem?'<div class="mbadge">회원</div>':''}
+    <div class="pc-img">${p.e}</div>
+    <div class="pc-name">${p.n}</div>
+    <div class="pc-desc">${p.d}</div>
+    <div class="pc-ft">
+      <div class="pc-price">${p.p}</div>
+      <button class="btn-buy" onclick="event.stopPropagation();addCart('${p.n.replace(/'/g,'')}')">담기</button>
+    </div>`;
+  return div;
+}
+
+function render(){
+  const gf=document.getElementById('grid-feat');
+  const gn=document.getElementById('grid-new');
+  const ga=document.getElementById('grid-all');
+  const gm1=document.getElementById('grid-mem1');
+  const filtered = currentCat ? PUB.filter(p=>p.cat===currentCat) : PUB;
+  if(gf){gf.innerHTML='';PUB.slice(0,4).forEach(p=>gf.appendChild(mkCard(p)));}
+  if(gn){gn.innerHTML='';PUB.filter(p=>p.isNew).forEach(p=>gn.appendChild(mkCard(p)));}
+  const secTitle = document.querySelector('#pg-shop .sec-title');
+  if(secTitle) secTitle.textContent = currentCat ? `🛸 ${currentCat}` : '🛸 전체 상품 목록';
+  if(ga){
+    ga.innerHTML='';
+    if(filtered.length===0){
+      ga.innerHTML='<div style="color:rgba(0,255,65,0.4);font-size:12px;padding:20px;text-align:center;">※ 해당 카테고리 상품 없음. 아직 지구에 도착하지 않은 듯하다 ※</div>';
+    } else {
+      filtered.forEach(p=>ga.appendChild(mkCard(p)));
+    }
+  }
+  if(gm1&&user){gm1.innerHTML='';MEM1.forEach(p=>gm1.appendChild(mkCard(p)));}
+}
+
+let currentCat = null;
+
+function showPage(name, cat){
+  if(name==='member'&&!user){openMo('moLogin');return;}
+  currentCat = (cat === undefined ? null : cat);
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('act'));
+  const t=document.getElementById('pg-'+name);
+  if(t)t.classList.add('act');
+  render();
+}
+
+function actNav(el){
+  document.querySelectorAll('.nav-it').forEach(n=>n.classList.remove('act'));
+  el.classList.add('act');
+}
+
+function openMo(id){document.getElementById(id).classList.add('open');}
+function closeMo(id){document.getElementById(id).classList.remove('open');}
+function swMo(a,b){closeMo(a);openMo(b);}
+
+document.querySelectorAll('.mo').forEach(o=>{
+  o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');});
+});
+
+function doLogin(){
+  const id=document.getElementById('liId').value.trim();
+  const pw=document.getElementById('liPw').value;
+  const err=document.getElementById('liErr');
+  err.style.display='none';
+  if(!id||!pw){err.textContent='▶ 아이디와 비밀번호를 입력해주세요';err.style.display='block';return;}
+  const users=JSON.parse(localStorage.getItem('spaceUsers')||'[]');
+  const u=users.find(x=>x.id===id&&x.pw===pw);
+  if(!u){err.textContent='▶ 아이디 또는 비밀번호가 틀렸습니다';err.style.display='block';return;}
+  loginOk(u);closeMo('moLogin');
+}
+
+function doReg(){
+  const id=document.getElementById('rId').value.trim();
+  const pw=document.getElementById('rPw').value;
+  const err=document.getElementById('regErr');
+  const ageErr=document.getElementById('ageErr');
+  err.style.display='none';ageErr.style.display='none';
+  if(!id||!pw){err.textContent='▶ 아이디와 비밀번호를 입력해주세요';err.style.display='block';return;}
+  if(id.length<4){err.textContent='▶ 아이디는 4자 이상이어야 합니다';err.style.display='block';return;}
+  if(pw.length<8){err.textContent='▶ 비밀번호는 8자 이상이어야 합니다';err.style.display='block';return;}
+  if(!document.getElementById('chkAdult').checked){ageErr.textContent='▶ 성인임을 확인하시오. 해당하지 않는 자는 뒤로 돌아가시오.';ageErr.style.display='block';return;}
+  if(!document.getElementById('chkTerms').checked){err.textContent='▶ 이용약관에 동의해주세요 (필수)';err.style.display='block';return;}
+  if(!document.getElementById('chkPrivacy').checked){err.textContent='▶ 개인정보 처리방침에 동의해주세요 (필수)';err.style.display='block';return;}
+  const users=JSON.parse(localStorage.getItem('spaceUsers')||'[]');
+  if(users.find(x=>x.id===id)){err.textContent='▶ 이미 사용 중인 아이디입니다';err.style.display='block';return;}
+  const nu={id,pw};
+  users.push(nu);localStorage.setItem('spaceUsers',JSON.stringify(users));
+  loginOk(nu);closeMo('moReg');
+  toast('★ 가입 완료! 은하포인트 1000P 지급!! ★');
+  setTimeout(()=>showPage('member'),500);
+}
+
+function loginOk(u){
+  user=u;
+  document.getElementById('authBtns').style.display='none';
+  const s=document.getElementById('uStat');s.classList.add('vis');
+  document.getElementById('uBadge').textContent='[ '+u.id+' ]';
+  document.getElementById('navMember').style.display='flex';
+  const ht=document.getElementById('homeTeaser');if(ht)ht.style.display='none';
+  const st=document.getElementById('shopTeaser');if(st)st.style.display='none';
+  toast('★ '+u.id+'님 환영합니다! ★');
+  render();
+}
+
+function logout(){
+  user=null;
+  document.getElementById('authBtns').style.display='flex';
+  document.getElementById('uStat').classList.remove('vis');
+  document.getElementById('navMember').style.display='none';
+  const ht=document.getElementById('homeTeaser');if(ht)ht.style.display='block';
+  const st=document.getElementById('shopTeaser');if(st)st.style.display='block';
+  showPage('home');toast('로그아웃 되었습니다');
+}
+
+function openPd(p){
+  curProd=p;
+  document.getElementById('pdImg').textContent=p.e;
+  document.getElementById('pdName').textContent=p.n;
+  document.getElementById('pdDesc').textContent=p.d;
+  document.getElementById('pdPrice').textContent=p.p;
+  document.getElementById('pdModal').classList.add('open');
+  const r=document.getElementById('recentList');
+  if(r){
+    const items=r.textContent==='없음'?[]:r.textContent.split('\n').filter(Boolean);
+    const nm=p.e+' '+p.n.replace('[회원] ','').replace('[한정] ','');
+    const f=items.filter(i=>!i.startsWith(p.e));f.unshift(nm);
+    r.textContent=f.slice(0,3).join('\n');
+  }
+}
+function closePd(){document.getElementById('pdModal').classList.remove('open');}
+document.getElementById('pdModal').addEventListener('click',e=>{if(e.target===document.getElementById('pdModal'))closePd();});
+
+function addCart(name){toast('🛒 '+(name||curProd&&curProd.n||'상품')+' 담기 완료!');}
+function buyNow(){
+  closePd();
+  if(curProd && curProd.id === 102){
+    openMo('moBand');
+  } else {
+    toast('💳 결제 기능은 준비 중입니다!');
+  }
+}
+function toast(msg){
+  const t=document.getElementById('toastEl');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+render();
+</script>
+</body>
+</html>
