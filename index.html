@@ -174,7 +174,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
     </div>
   </div>
   <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;">
-    <div class="vis-count">[ 현재접속: <span id="nowOnline">247</span>명 ONLINE ]</div>
+    <div class="vis-count">[ 현재접속: <span id="nowOnline" onclick="panicEgg()" style="cursor:pointer;">247</span>
     <div class="hdr-btns" id="authBtns">
       <button class="btn btn-c" onclick="openMo('moLogin')">로그인</button>
       <button class="btn btn-p" onclick="openMo('moReg')">회원가입</button>
@@ -611,6 +611,18 @@ function toast(msg){
   setTimeout(()=>t.classList.remove('show'),2800);
 }
 
+function panicEgg(){
+  const el=document.getElementById('nowOnline');
+  const orig=el.textContent;
+  el.style.color='var(--np)';
+  el.style.textShadow='0 0 8px var(--np)';
+  el.textContent='PANIC 요원 감지됨';
+  setTimeout(()=>{
+    el.textContent=orig;
+    el.style.color='';
+    el.style.textShadow='';
+  },2000);
+}
 render();
 </script>
 </body>
