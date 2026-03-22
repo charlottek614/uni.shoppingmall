@@ -431,11 +431,13 @@ const PUB=[
   {id:5,e:'🛁',n:'혈욕조',d:'※10년 무상 A/S 가능',p:'₩14,999,999',cat:'주거침입용품'},
   {id:6,e:'🍎',n:'백설공주의 사과',d:'백설산 사과. 정말 맛있다! 미용과 영양! ※사망형 수면 중 신체에 일어난 모든 변화에 대하여 본 농원은 책임지지 않습니다.',p:'₩11,999,999',isNew:true,cat:'섭취용품'},
   {id:7,e:'🕯️',n:'신비한 양초 키트',d:'권장 이용자: 지구인',p:'₩19,999,999',cat:'기타용품'},
-  {id:8,e:'💋',n:'너부터는20만원 사헌 사원의 키스',d:'사헌 사원 공식 인증 키스권. 1회 사용 가능. 유효기간 없음. 단, 구매자 신원 검토 후 발송. 정가 5,000원이지만 손님부터는 가격 인상. ※ 판매자의 요청으로 현재 판매 재개 상태입니다 ※',p:'₩200,000',cat:'기타용품',isNew:true, noReturn:true},
 ];
 const MEM1=[
   {id:101,e:'🔴',n:'[회원] 우리가 도움',d:'긴급 탈출',p:'₩66,666,666',mem:true},
   {id:102,e:'🅱️',n:'[회원] 밴드 가입',d:'한정 특가! 무료로 가입 가능',p:'FREE',mem:true},
+  {id:103,e:'🎡', img:'https://wjaalien.github.io/uni.shoppingmall/images/bluedream.png', n:'[회원] 블루드림 유쾌 테마파크', d:'회원 전용 초대권. 입장 시 츄러스 무료 제공!! 수량 한정.', p:'FREE', mem:true, isNew:true},
+  {id:104,e:'💋',n:'너부터는20만원 사헌 사원의 키스',d:'사헌 사원 공식 인증 키스권. 1회 사용 가능. 유효기간 없음. 단, 구매자 신원 검토 후 발송. 정가 5,000원이지만 손님부터는 가격 인상. ※ 판매자의 요청으로 현재 판매 재개 상태입니다 ※',p:'₩200,000',cat:'기타용품',isNew:true, noReturn:true},
+
 ];
 
 let user=null;
@@ -472,7 +474,11 @@ function mkCard(p){
   ${p.isNew?'<div class="nbadge">NEW!</div>':''}
   ${p.soldOut?'<div class="nbadge" style="background:#ff0000;left:-1px;right:auto;">SOLD OUT</div>':''}
   ${p.noReturn?'<div class="nbadge" style="background:#cc0000;left:-1px;right:auto;top:-1px;">반품불가</div>':''}    ${p.mem?'<div class="mbadge">회원</div>':''}
-    <div class="pc-img">${p.e}</div>
+    <div class="pc-img">
+  ${p.img
+    ? `<img src="${p.img}" style="width:100%;height:100%;object-fit:cover;">`
+    : p.e}
+    </div>
     <div class="pc-name">${p.n}</div>
     <div class="pc-desc">${p.d}</div>
     <div class="pc-ft">
