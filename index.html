@@ -472,8 +472,7 @@ function mkCard(p){
   div.innerHTML=`
   ${p.isNew?'<div class="nbadge">NEW!</div>':''}
   ${p.soldOut?'<div class="nbadge" style="background:#ff0000;left:-1px;right:auto;">SOLD OUT</div>':''}
-  ${p.noReturn?'<div class="nbadge" style="background:#cc0000;left:-1px;right:auto;top:-1px;">반품불가</div>':''}    ${p.mem?'<div class="mbadge">회원</div>':''}
-    <div class="pc-img">
+  ${p.noReturn?'<div class="nbadge" style="background:#cc0000;left:auto;right:-1px;top:22px;">반품불가</div>':''}    <div class="pc-img">
   ${p.img
     ? `<img src="${p.img}" style="width:100%;height:100%;object-fit:cover;">`
     : p.e}
